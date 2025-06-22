@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MGMT301 Spring 2024-25: Our Journey</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sage-green: #8a9a8b;
+            --dark-sage: #6b7d6c;
+            --darker-sage: #4f5e50;
+            --light-sage: #c8d5c8;
+            --white: #f9fbf9;
+            --cream: #f5f7f3;
+            --dark-text: #2a312a;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--dark-text);
+            background: linear-gradient(135deg, var(--sage-green) 0%, var(--white) 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .logo {
+            height: 60px;
+            margin-right: 15px;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--darker-sage);
+            font-weight: 700;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            padding: 2rem 0;
+            position: relative;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 25%;
+            width: 50%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--dark-sage), transparent);
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: var(--darker-sage);
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .subtitle {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 300;
+            font-size: 1.2rem;
+            color: var(--dark-sage);
+            letter-spacing: 1px;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+
+        .tab {
+            padding: 0.8rem 1.8rem;
+            cursor: pointer;
+            background-color: var(--cream);
+            border: none;
+            border-radius: 30px;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 600;
+            color: var(--darker-sage);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            letter-spacing: 0.5px;
+        }
+
+        .tab:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            background-color: var(--light-sage);
+        }
+
+        .tab.active {
+            background-color: var(--dark-sage);
+            color: var(--cream);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.6s ease-out;
+            background-color: rgba(249, 251, 249, 0.9);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Course Intro Styles */
+        .intro-content {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .intro-text {
+            flex: 2;
+        }
+
+        .intro-image {
+            flex: 1;
+            background-color: var(--light-sage);
+            border-radius: 8px;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--darker-sage);
+            font-style: italic;
+        }
+
+        /* Syllabus Styles */
+        .week {
+            background: var(--white);
+            border-radius: 8px;
+            margin-bottom: 1.2rem;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--dark-sage);
+        }
+
+        .week:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .week-header {
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            background-color: var(--light-sage);
+            transition: all 0.3s ease;
+        }
+
+        .week-header:hover {
+            background-color: #b8c9b8;
+        }
+
+        .week-header h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--darker-sage);
+            font-size: 1.4rem;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .week-content {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+        }
+
+        .week.active .week-content {
+            padding: 1.5rem;
+            max-height: 500px;
+        }
+
+        /* Speakers Styles */
+        .speaker {
+            background: var(--white);
+            border-radius: 8px;
+            margin-bottom: 1.2rem;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .speaker:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .speaker-header {
+            padding: 1.2rem 1.5rem;
+            cursor: pointer;
+            background-color: var(--light-sage);
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .speaker-header:hover {
+            background-color: #b8c9b8;
+        }
+
+        .speaker-header h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--darker-sage);
+            font-size: 1.4rem;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .speaker-content {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+        }
+
+        .speaker.active .speaker-content {
+            padding: 1.5rem;
+            max-height: 500px;
+        }
+
+        /* Assignments Styles */
+        .assignment {
+            background: var(--white);
+            border-radius: 8px;
+            margin-bottom: 1.2rem;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--sage-green);
+        }
+
+        .assignment:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .assignment-header {
+            padding: 1.2rem 1.5rem;
+            cursor: pointer;
+            background-color: var(--light-sage);
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .assignment-header:hover {
+            background-color: #b8c9b8;
+        }
+
+        .assignment-header h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--darker-sage);
+            font-size: 1.4rem;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .assignment-content {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+        }
+
+        .assignment.active .assignment-content {
+            padding: 1.5rem;
+            max-height: 500px;
+        }
+
+        .assignment-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .assignment-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .intro-content {
+                flex-direction: column;
+            }
+            
+            .tab {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-container">
+            <img src="image.png" alt="Sabancı University Logo" class="logo">
+            
+        </div>
+        
+        <header>
+            <h1>MGMT301 Spring 2024-25</h1>
+            <div class="subtitle">Our Journey Through Sustainability Principles</div>
+        </header>
+        
+        <div class="tabs">
+            <div class="tab active" data-tab="intro">Course Intro</div>
+            <div class="tab" data-tab="syllabus">Syllabus</div>
+            <div class="tab" data-tab="speakers">Guest Speakers</div>
+            <div class="tab" data-tab="assignments">Assignments</div>
+        </div>
+        
+        <!-- Course Intro Tab -->
+        <div id="intro" class="tab-content active">
+            <div class="intro-content">
+                <div class="intro-text">
+                    <h2>Sustainability in Business Management</h2>
+                    <p>This course explores the fundamental principles of sustainable business practices and their integration into modern management strategies. We will examine how organizations can balance economic growth with environmental responsibility and social equity.</p>
+                    
+                    <h3>Course Objectives</h3>
+                    <ul>
+                        <li>Understand the triple bottom line framework (People, Planet, Profit)</li>
+                        <li>Analyze case studies of successful sustainable business transformations</li>
+                        <li>Develop strategies for implementing sustainability initiatives</li>
+                        <li>Evaluate the business case for corporate social responsibility</li>
+                    </ul>
+                    
+                    <h3>Key Topics</h3>
+                    <ul>
+                        <li>Circular economy principles</li>
+                        <li>ESG (Environmental, Social, Governance) metrics</li>
+                        <li>Sustainable supply chain management</li>
+                        <li>Green marketing and consumer behavior</li>
+                    </ul>
+                </div>
+                <div class="intro-image">
+                    Sustainability in<br>Business Education
+                </div>
+            </div>
+        </div>
+        
+        <!-- Syllabus Tab -->
+        <div id="syllabus" class="tab-content">
+            <div class="week" onclick="toggleActive(this)">
+                <div class="week-header">
+                    <h2>Week 1: Foundations</h2>
+                </div>
+                <div class="week-content">
+                    <h3>Topics Covered</h3>
+                    <ul>
+                        <li>Introduction to Management Principles</li>
+                        <li>Historical Evolution of Management</li>
+                        <li>The Manager's Role in Modern Organizations</li>
+                    </ul>
+                    <h3>Readings</h3>
+                    <ul>
+                        <li>Textbook: Chapter 1-2</li>
+                        <li>Article: "The Changing Face of Management"</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="week" onclick="toggleActive(this)">
+                <div class="week-header">
+                    <h2>Week 2: Organizational Dynamics</h2>
+                </div>
+                <div class="week-content">
+                    <h3>Topics Covered</h3>
+                    <ul>
+                        <li>Organizational Structures</li>
+                        <li>Corporate Culture and Climate</li>
+                        <li>Change Management</li>
+                    </ul>
+                    <h3>Readings</h3>
+                    <ul>
+                        <li>Textbook: Chapter 3-4</li>
+                        <li>Case Study: "Zappos' Holacracy Experiment"</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="week" onclick="toggleActive(this)">
+                <div class="week-header">
+                    <h2>Week 3: Strategic Thinking</h2>
+                </div>
+                <div class="week-content">
+                    <h3>Topics Covered</h3>
+                    <ul>
+                        <li>Vision, Mission, and Values</li>
+                        <li>SWOT Analysis</li>
+                        <li>Competitive Advantage</li>
+                    </ul>
+                    <h3>Readings</h3>
+                    <ul>
+                        <li>Textbook: Chapter 5-6</li>
+                        <li>Article: "Blue Ocean Strategy in Practice"</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Guest Speakers Tab -->
+        <div id="speakers" class="tab-content">
+            <div class="speaker" onclick="toggleActive(this)">
+                <div class="speaker-header">
+                    <h2>Speaker 1: Leadership Insights</h2>
+                </div>
+                <div class="speaker-content">
+                    <div class="speaker-meta">
+                        <p><strong>Date:</strong> March 15, 2025</p>
+                        <p><strong>Time:</strong> 2:00 PM - 3:30 PM</p>
+                        <p><strong>Location:</strong> Business Hall 204</p>
+                    </div>
+                    <h3>About the Session</h3>
+                    <p>Join industry veteran Samantha Chen as she discusses transformational leadership in the digital age, drawing from her 15 years of experience at Fortune 500 companies.</p>
+                </div>
+            </div>
+            
+            <div class="speaker" onclick="toggleActive(this)">
+                <div class="speaker-header">
+                    <h2>Speaker 2: Innovation Workshop</h2>
+                </div>
+                <div class="speaker-content">
+                    <div class="speaker-meta">
+                        <p><strong>Date:</strong> April 5, 2025</p>
+                        <p><strong>Time:</strong> 10:00 AM - 12:00 PM</p>
+                        <p><strong>Location:</strong> Innovation Lab</p>
+                    </div>
+                    <h3>About the Session</h3>
+                    <p>Design thinking expert Marcus Johnson will lead this hands-on workshop demonstrating how to foster innovation in traditional business environments.</p>
+                </div>
+            </div>
+            
+            <div class="speaker" onclick="toggleActive(this)">
+                <div class="speaker-header">
+                    <h2>Speaker 3: Global Perspectives</h2>
+                </div>
+                <div class="speaker-content">
+                    <div class="speaker-meta">
+                        <p><strong>Date:</strong> May 10, 2025</p>
+                        <p><strong>Time:</strong> 1:00 PM - 2:30 PM</p>
+                        <p><strong>Location:</strong> Global Business Center</p>
+                    </div>
+                    <h3>About the Session</h3>
+                    <p>Former diplomat and international business consultant Aisha Mohammed shares insights on managing cross-cultural teams in global organizations.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Assignments Tab -->
+        <div id="assignments" class="tab-content">
+            <div class="assignment" onclick="toggleActive(this)">
+                <div class="assignment-header">
+                    <h2>Reflection: Personal Management Philosophy</h2>
+                </div>
+                <div class="assignment-content">
+                    <div class="assignment-meta">
+                        <span><i class="far fa-calendar-alt"></i> Due: February 10, 2025</span>
+                        <span><i class="far fa-file-alt"></i> 750-1000 words</span>
+                        <span><i class="far fa-percent"></i> 15% of grade</span>
+                    </div>
+                    <h3>Description</h3>
+                    <p>Develop a personal management philosophy statement reflecting on your values, leadership style, and approach to organizational challenges. Incorporate concepts from Weeks 1-2 readings.</p>
+                </div>
+            </div>
+            
+            <div class="assignment" onclick="toggleActive(this)">
+                <div class="assignment-header">
+                    <h2>Audit: Organizational Analysis</h2>
+                </div>
+                <div class="assignment-content">
+                    <div class="assignment-meta">
+                        <span><i class="far fa-calendar-alt"></i> Due: March 15, 2025</span>
+                        <span><i class="far fa-file-alt"></i> 8-10 pages</span>
+                        <span><i class="far fa-percent"></i> 25% of grade</span>
+                    </div>
+                    <h3>Description</h3>
+                    <p>Conduct a comprehensive audit of a real organization's structure, culture, and strategic approach. Your analysis should identify strengths, weaknesses, and recommendations for improvement.</p>
+                </div>
+            </div>
+            
+            <div class="assignment" onclick="toggleActive(this)">
+                <div class="assignment-header">
+                    <h2>Debate: Ethical Dilemmas</h2>
+                </div>
+                <div class="assignment-content">
+                    <div class="assignment-meta">
+                        <span><i class="far fa-calendar-alt"></i> Due: April 5, 2025</span>
+                        <span><i class="far fa-clock"></i> 15 minute presentation</span>
+                        <span><i class="far fa-percent"></i> 10% of grade</span>
+                    </div>
+                    <h3>Description</h3>
+                    <p>Participate in a team debate on contemporary ethical challenges in management. Teams will be assigned positions to argue regarding real-world case studies.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching functionality
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and contents
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab and corresponding content
+                tab.classList.add('active');
+                const tabId = tab.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Toggle active class for accordion items
+        function toggleActive(element) {
+            element.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
