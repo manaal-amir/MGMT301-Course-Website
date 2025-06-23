@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --sage-green: #8a9a8b;
@@ -155,6 +156,52 @@
             justify-content: center;
             color: var(--darker-sage);
             font-style: italic;
+        }
+
+        /* User Guide Styles */
+        .guide-section {
+            margin-bottom: 2rem;
+        }
+
+        .guide-section h2 {
+            color: var(--darker-sage);
+            font-family: 'Playfair Display', serif;
+            border-bottom: 2px solid var(--light-sage);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .guide-step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            background: var(--cream);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .step-number {
+            background-color: var(--dark-sage);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+            font-weight: bold;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-content h3 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            color: var(--darker-sage);
         }
 
         /* Syllabus Styles */
@@ -343,6 +390,11 @@
                 padding: 0.6rem 1.2rem;
                 font-size: 0.9rem;
             }
+            
+            .assignment-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
         }
     </style>
 </head>
@@ -350,12 +402,12 @@
     <div class="container">
         <div class="logo-container">
             <img src="image.png" alt="Sabancı University Logo" class="logo">
-            
+            <div class="logo-text">SABANCI BUSINESS SCHOOL</div>
         </div>
         
         <header>
             <h1>MGMT301 Spring 2024-25</h1>
-            <div class="subtitle">Our Journey Through Sustainability Principles</div>
+            <div class="subtitle">Our Journey Through Management Principles</div>
         </header>
         
         <div class="tabs">
@@ -363,6 +415,7 @@
             <div class="tab" data-tab="syllabus">Syllabus</div>
             <div class="tab" data-tab="speakers">Guest Speakers</div>
             <div class="tab" data-tab="assignments">Assignments</div>
+            <div class="tab" data-tab="guide">User Guide</div>
         </div>
         
         <!-- Course Intro Tab -->
@@ -546,6 +599,87 @@
                     </div>
                     <h3>Description</h3>
                     <p>Participate in a team debate on contemporary ethical challenges in management. Teams will be assigned positions to argue regarding real-world case studies.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- User Guide Tab -->
+        <div id="guide" class="tab-content">
+            <div class="guide-section">
+                <h2>How to Use This Website</h2>
+                <p>This guide will help you navigate and make the most of our course website. Follow these simple steps to access all available resources.</p>
+            </div>
+            
+            <div class="guide-section">
+                <h2>Navigation Guide</h2>
+                
+                <div class="guide-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Switching Between Sections</h3>
+                        <p>Use the tabs at the top of the page to navigate between different sections of the course:</p>
+                        <ul>
+                            <li><strong>Course Intro</strong> - Overview and objectives</li>
+                            <li><strong>Syllabus</strong> - Weekly breakdown of topics</li>
+                            <li><strong>Guest Speakers</strong> - Information about special sessions</li>
+                            <li><strong>Assignments</strong> - Details about coursework</li>
+                            <li><strong>User Guide</strong> - These instructions</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="guide-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Viewing Content Details</h3>
+                        <p>Most sections feature expandable content areas:</p>
+                        <ul>
+                            <li>Click on any week in the Syllabus to see topics and readings</li>
+                            <li>Click on speaker names to view session details</li>
+                            <li>Click on assignments to view requirements and due dates</li>
+                        </ul>
+                        <p>Click again to collapse the details when you're finished.</p>
+                    </div>
+                </div>
+                
+                <div class="guide-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Mobile-Friendly Design</h3>
+                        <p>The website adapts to different screen sizes:</p>
+                        <ul>
+                            <li>On smaller screens, tabs stack vertically</li>
+                            <li>Content reflows for easy reading on phones and tablets</li>
+                            <li>All interactive elements remain fully functional</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="guide-section">
+                <h2>Tips for Success</h2>
+                <div class="guide-step">
+                    <div class="step-number"><i class="fas fa-lightbulb"></i></div>
+                    <div class="step-content">
+                        <h3>Stay Organized</h3>
+                        <p>Bookmark this page for easy access throughout the semester. Check the Assignments tab regularly to stay on top of deadlines.</p>
+                    </div>
+                </div>
+                
+                <div class="guide-step">
+                    <div class="step-number"><i class="fas fa-bell"></i></div>
+                    <div class="step-content">
+                        <h3>Set Reminders</h3>
+                        <p>Note important dates from the Guest Speakers and Assignments sections in your personal calendar.</p>
+                    </div>
+                </div>
+                
+                <div class="guide-step">
+                    <div class="step-number"><i class="fas fa-question-circle"></i></div>
+                    <div class="step-content">
+                        <h3>Need Help?</h3>
+                        <p>If you encounter any technical issues with the website, please contact the course instructor or teaching assistant for support.</p>
+                    </div>
                 </div>
             </div>
         </div>
