@@ -10,10 +10,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --sage-green: #8a9a8b;
-            --dark-sage: #6b7d6c;
-            --darker-sage: #4f5e50;
-            --light-sage: #c8d5c8;
+            --sage-green: #6dae76; 
+            --dark-sage: #4e8c5a;
+            --darker-sage: #224f2b; 
+            --light-sage: #c8e8ce; 
             --white: #f9fbf9;
             --cream: #f5f7f3;
             --dark-text: #2a312a;
@@ -34,6 +34,88 @@
             max-width: 1000px;
             margin: 0 auto;
             padding: 2rem;
+            position: relative;
+        }
+
+        /* Credits Box Styles */
+        .credits-box {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+
+        .credits-toggle {
+    background-color: var(--dark-sage);
+    color: var(--cream);
+    border: none;
+    border-radius: 20px;
+    padding: 5px 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+        .credits-toggle:hover {
+    background-color: var(--darker-sage);
+    transform: scale(1.05);
+}
+
+        .credits-toggle i {
+    font-size: 0.9rem;
+}
+
+        .credits-content {
+            position: absolute;
+            top: 40px;
+            right: 0;
+            width: 250px;
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            transform: translateY(-10px);
+        }
+
+        .credits-box:hover .credits-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .credits-content h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--darker-sage);
+            font-size: 1.1rem;
+            margin-top: 0;
+            margin-bottom: 10px;
+            border-bottom: 1px solid var(--light-sage);
+            padding-bottom: 5px;
+        }
+
+        .credits-content p {
+            margin: 8px 0;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .credits-content a {
+            color: var(--dark-sage);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .credits-content a:hover {
+            text-decoration: underline;
         }
 
         .logo-container {
@@ -146,17 +228,25 @@
             flex: 2;
         }
 
-        .intro-image {
-            flex: 1;
-            background-color: var(--light-sage);
-            border-radius: 8px;
-            min-height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--darker-sage);
-            font-style: italic;
-        }
+        
+.intro-image {
+    flex: 1;
+    min-height: 200px; 
+    border-radius: 8px;
+    overflow: hidden; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    background-color: var(--light-sage); 
+}
+
+
+.intro-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; 
+    border-radius: 6px; 
+}
 
         /* User Guide Styles */
         .guide-section {
@@ -395,19 +485,54 @@
                 flex-direction: column;
                 gap: 0.5rem;
             }
+            
+            .credits-box {
+                top: 10px;
+                right: 10px;
+            }
+            
+            .credits-content {
+                width: 200px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Credits Box -->
+        <div class="credits-box">
+            <button class="credits-toggle" title="Contact">
+                <span>Contacts</span>
+            </button>
+            <div class="credits-content">
+                <h3>Course Credits</h3>
+                
+                <p><strong>Course Instructors:</strong><br>
+                Nuri Zafer Yenal: Course Instructor<br>
+                Aslı Gürler Kandemir: Course TA<br>
+                <a href="mailto:zafer.yenal@sabanciuniv.edu">zafer.yenal@sabanciuniv.edu</a>
+                <a href="mailto:asligurler@sabanciuniv.edu">asligurler@sabanciuniv.edu</a></p>
+
+                <p><strong>Website Credits:</strong><br>
+                Syeda Manaal Amir (Spring 2025 Course Student) <br>
+                <a href="mailto:manaal.amir@sabanciuniv.edu">manaal.amir@sabanciuniv.edu<br></a>
+            <a href="https://www.linkedin.com/in/syeda-manaal-amir-2336b2253" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-linkedin"></i> Connect on LinkedIn
+</a></p>
+                
+                
+                <p><small>MGMT301 Spring 2024-25</small></p>
+            </div>
+        </div>
+        
         <div class="logo-container">
             <img src="image.png" alt="Sabancı University Logo" class="logo">
-            <div class="logo-text">SABANCI BUSINESS SCHOOL</div>
+            
         </div>
         
         <header>
             <h1>MGMT301 Spring 2024-25</h1>
-            <div class="subtitle">Our Journey Through Management Principles</div>
+            <div class="subtitle">Our Journey Through Sustainability Principles</div>
         </header>
         
         <div class="tabs">
@@ -422,28 +547,22 @@
         <div id="intro" class="tab-content active">
             <div class="intro-content">
                 <div class="intro-text">
-                    <h2>Sustainability in Business Management</h2>
-                    <p>This course explores the fundamental principles of sustainable business practices and their integration into modern management strategies. We will examine how organizations can balance economic growth with environmental responsibility and social equity.</p>
+                    <h2>Introduction to Sustainability</h2>
+                    <p>In this course, guided by Prof. Nuri Zafer Yenal and our TA, Aslı Gürler Kandemir, we explored sustainability from a broad perspective, covering not just environmental issues, but also the economic and social dimensions. We examined how topics like inequality, poverty, and consumption are deeply tied to sustainability.<br>
+
+Each week, we tackled big ideas like the climate crisis, the Anthropocene, circular economy, green transitions, green financing, and degrowth. Concepts such as carbon markets, ESG, and environmental justice became part of our regular discussions.<br>
+
+What made the course especially engaging was how we connected theory to real-life examples, looking at industries like fast fashion, plastics, mining, and electric vehicles to explore the trade-offs of becoming more sustainable.<br>
+
+Most importantly, we learned that sustainability is also a political issue, shaping, and shaped by, policies, markets, and everyday choices.
+
+This website aims to capture our learning journey and share it with future students. We hope it serves both as a reflection of our experience and as a source of inspiration for those interested in this meaningful topic.</p>
                     
-                    <h3>Course Objectives</h3>
-                    <ul>
-                        <li>Understand the triple bottom line framework (People, Planet, Profit)</li>
-                        <li>Analyze case studies of successful sustainable business transformations</li>
-                        <li>Develop strategies for implementing sustainability initiatives</li>
-                        <li>Evaluate the business case for corporate social responsibility</li>
-                    </ul>
                     
-                    <h3>Key Topics</h3>
-                    <ul>
-                        <li>Circular economy principles</li>
-                        <li>ESG (Environmental, Social, Governance) metrics</li>
-                        <li>Sustainable supply chain management</li>
-                        <li>Green marketing and consumer behavior</li>
-                    </ul>
                 </div>
                 <div class="intro-image">
-                    Sustainability in<br>Business Education
-                </div>
+    <img src="courseinfotab.jpg" alt="MGMT301-Sustainability in Business Education" class="intro-img">
+</div>
             </div>
         </div>
         
@@ -451,57 +570,204 @@
         <div id="syllabus" class="tab-content">
             <div class="week" onclick="toggleActive(this)">
                 <div class="week-header">
-                    <h2>Week 1: Foundations</h2>
+                    <h2>Week 1: The Birth of an Idea-Sustainability</h2>
                 </div>
                 <div class="week-content">
-                    <h3>Topics Covered</h3>
+                    <h3>Key Themes</h3>
                     <ul>
-                        <li>Introduction to Management Principles</li>
-                        <li>Historical Evolution of Management</li>
-                        <li>The Manager's Role in Modern Organizations</li>
+                        <li>History of Sustainability</li>
+                        <li>Major Perspectives</li>
+                        <li>Contemporary Debates</li>
                     </ul>
                     <h3>Readings</h3>
                     <ul>
-                        <li>Textbook: Chapter 1-2</li>
-                        <li>Article: "The Changing Face of Management"</li>
+                        <li>Caradonna, Sustainability: A History (Introduction)</li>
+                        <li>Robson, “Pessimism Is a Barrier to Progress” (Big Think)</li>
+                        <li>Malik, “Why Climate Tribalism Only Helps the Deniers” (The Guardian)</li>
                     </ul>
                 </div>
             </div>
             
             <div class="week" onclick="toggleActive(this)">
                 <div class="week-header">
-                    <h2>Week 2: Organizational Dynamics</h2>
+                    <h2>Week 2: Foundational Concepts-The Anthropocene and Beyond</h2>
                 </div>
                 <div class="week-content">
-                    <h3>Topics Covered</h3>
+                    <h3>Key Themes</h3>
                     <ul>
-                        <li>Organizational Structures</li>
-                        <li>Corporate Culture and Climate</li>
-                        <li>Change Management</li>
+                        <li>The Anthropocene as a proposed geological epoch.</li>
+                        <li>The Great Acceleration: Human impact since the mid-20th century.</li>
+                        <li>What are the major sociological drivers of this period?</li>
                     </ul>
                     <h3>Readings</h3>
                     <ul>
-                        <li>Textbook: Chapter 3-4</li>
-                        <li>Case Study: "Zappos' Holacracy Experiment"</li>
+                        <li>Steffen et al. (2015): “The Great Acceleration &amp; the Anthropocene” (The
+Anthropocene Review).</li>
+                        <li>Haraway (2015): “Anthropocene, Capitalocene, Plantationocene, Chthulucene”
+(Environmental Humanities).</li>
+                    <li>Natural History Museum (NHM): What is the Anthropocene?</li>
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="week" onclick="toggleActive(this)">
+                <div class="week-header">
+                    <h2>Week 3: Globalization, Regularity modes and Social Sustainability</h2>
+                </div>
+                <div class="week-content">
+                    <h3>Key Themes</h3>
+                    <ul>
+                        <li>Understanding the Sustainable Development Goals (SDGs) and their significance</li>
+                        <li>Exploring the Triple Bottom Line (TBL) framework</li>
+                        <li>Discussing challenges in measuring sustainability</li>
+                    </ul>
+                    <h3>Readings</h3>
+                    <ul>
+                        <li>The Sustainable Development Goals Report Overview 2016 (United Nations)</li>
+                        <li>The Triple Bottom Line: What Is It and How Does It Work? (Timothy F. Slaper and
+Tanya Hall, 2011)</li>
                     </ul>
                 </div>
             </div>
             
             <div class="week" onclick="toggleActive(this)">
                 <div class="week-header">
-                    <h2>Week 3: Strategic Thinking</h2>
+                    <h2>Week 4: Environmental Injustice: History, Structure and Actors</h2>
                 </div>
                 <div class="week-content">
-                    <h3>Topics Covered</h3>
+                    <h3>Key Themes</h3>
                     <ul>
-                        <li>Vision, Mission, and Values</li>
-                        <li>SWOT Analysis</li>
-                        <li>Competitive Advantage</li>
+                        <li>Environmental Injustice: Unequal exposure to climate hazards and pollution.</li>
+                        <li>Historical Context: How did power relations in the past and global climate
+agreements in the present shape environmental inequality?</li>
+                        <li>Power and Actors: The role of nations, corporations, and civil society in climate
+politics.</li>
+                        <li>Carbon Inequality: Disparities in emissions between and within countries.</li>
+                        <li>Climate Justice Solutions: Policies to ensure fair and inclusive environmental action.</li>
                     </ul>
                     <h3>Readings</h3>
                     <ul>
-                        <li>Textbook: Chapter 5-6</li>
-                        <li>Article: "Blue Ocean Strategy in Practice"</li>
+                        <li>Ciplet, Roberts &amp; Khan (2015): Trading a Livable World – The politics of climate
+change and environmental inequality.</li>
+                        <li>Chancel (2022): Global Carbon Inequality Over 1990–2019 – The role of wealth and
+emissions in climate injustice.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="week" onclick="toggleActive(this)">
+                <div class="week-header">
+                    <h2>Week 5: The environmental cost of Commodity Chains and Consumer Responsibility</h2>
+                </div>
+                <div class="week-content">
+                    <h3>Key Themes</h3>
+                    <ul>
+                        <li>Environmental Impact of Fast Fashion</li>
+                        <li>Overproduction &amp; Overconsumption</li>
+                        <li>Supply Chain in Garment Manufacturing</li>
+                        <li>Circular Economy in Fashion</li>
+                        <li>Consumer Behavior &amp; Responsibility</li>
+                    </ul>
+                    <h3>Readings</h3>
+                    <ul>
+                        <li>Ferraro &amp; de Tejada Cuenca (2024), &#39;Can the Fashion Industry Be More
+Sustainable?&#39;</li>
+                        <li>Niinimäki et al. (2020), &#39;The Environmental Price of Fast Fashion&#39;</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="week" onclick="toggleActive(this)">
+                <div class="week-header">
+                    <h2>Week 6: Circular Economy, Food and Plastics</h2>
+                </div>
+                <div class="week-content">
+                    <h3>Key Themes</h3>
+                    <ul>
+                        <li>Explore the principles of the circular economy (recycling, zero-waste, etc.)</li>
+                        <li>Its application to address critical environmental issues, including food security and
+plastics.</li>
+                    </ul>
+                    <h3>Readings</h3>
+                    <ul>
+                        <li>McMichael P. 2009. “The World Food Crisis in Historical Perspective.” Monthly
+Review: 61(3):32-47</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="week" onclick="toggleActive(this)">
+                <div class="week-header">
+                    <h2>Week 8&9: Mitigation, Carbon Markets, and Energy Transitions</h2>
+                </div>
+                <div class="week-content">
+                    <h3>Key Themes</h3>
+                    <ul>
+                        <li>Explore key climate mitigation strategies</li>
+                        <li>Understand carbon markets and payments for ecosystem services (PES)</li>
+                        <li>Examine energy transitions and decarbonization pathways</li>
+                        <li>Discuss degrowth as an alternative to traditional economic models</li>
+                        <li>Rethinking Materials for Sustainability</li>
+                    </ul>
+                    <h3>Readings</h3>
+                    <ul>
+                        <li>Benjamin K. Sovacool, et al. 2021. “Dispossessed by decarbonisation: Reducing
+vulnerability, injustice, and inequality in the lived experience of low-carbon pathways,”</li>
+                        <li>George Monbiot. 2021. “‘Green growth’ doesn’t exist – less of everything is the only
+way to avert catastrophe.”</li>
+                        <li>Zink, T., &amp; Geyer, R. 2016. There Is No Such Thing as a Green Product. Stanford
+Social Innovation Review.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="week" onclick="toggleActive(this)">
+                <div class="week-header">
+                    <h2>Week 10: Exploring ESG Investing and Green Finance</h2>
+                </div>
+                <div class="week-content">
+                    <h3>Key Themes</h3>
+                    <ul>
+                        <li>Uncover the world of ESG (Environmental, Social, and Governance) investing</li>
+                        <li>Explore the intersection of green finance, impact investment, distributive politics</li>
+                        <li>Explore the rise, criticisms, and future directions of ESG, including the politics, risks,
+and promises of sustainable investment strategies.</li>
+                    </ul>
+                    <h3>Readings</h3>
+                    <ul>
+                        <li>Harriet Agnew, et al. 2022. “How ESG investing came to a
+reckoning,” Financial Times, June 6.</li>
+                        <li>Cam Simpson, et al. 2021. “The ESG Mirage,” Bloomberg.</li>
+                        <li>UN Environment Programme, Leading the Way to a Sustainable Future Priorities for
+a Global Responsible Banking Sector.</li>
+<li>Alice Ross, Can sustainable investing survive Trump 2.0?. 2025. Financial Times,
+Jan.17.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="week" onclick="toggleActive(this)">
+                <div class="week-header">
+                    <h2>Week 12: Environmentalism in the era of Authoritarianism and Populism</h2>
+                </div>
+                <div class="week-content">
+                    <h3>Key Themes</h3>
+                    <ul>
+                        <li>Explore the intersections between rising authoritarianism, populism, and
+environmental governance.</li>
+                        <li>Discuss the challenges and opportunities of environmental activism</li>
+                        
+                    </ul>
+                    <h3>Readings</h3>
+                    <ul>
+                        <li>James McCarthy. 2019. “Authoritarianism, Populism, and the Environment:
+Comparative Experiences, Insights, and Perspectives,” Annals of the American
+Association of Geographers, 109:2, 301-313</li>
+                        <li>Lisa Friedman, 2024. “Trump’s Return Hangs Over U.N. Climate Negotiations,” New
+York Times, November 11.</li>
+                        <li>Miriam Meissner (2019) “Against Accumulation: Lifestyle Minimalism, Degrowth, and
+the Post-Ecological Condition” Journal of Cultural Economy.</li>
                     </ul>
                 </div>
             </div>
@@ -511,46 +777,98 @@
         <div id="speakers" class="tab-content">
             <div class="speaker" onclick="toggleActive(this)">
                 <div class="speaker-header">
-                    <h2>Speaker 1: Leadership Insights</h2>
+                    <h2>Speaker 1: Melda Çele</h2>
                 </div>
                 <div class="speaker-content">
                     <div class="speaker-meta">
-                        <p><strong>Date:</strong> March 15, 2025</p>
-                        <p><strong>Time:</strong> 2:00 PM - 3:30 PM</p>
-                        <p><strong>Location:</strong> Business Hall 204</p>
+                        <p><strong>Week:</strong> 3</p>
+                        
                     </div>
                     <h3>About the Session</h3>
-                    <p>Join industry veteran Samantha Chen as she discusses transformational leadership in the digital age, drawing from her 15 years of experience at Fortune 500 companies.</p>
+                    <p>Melda Çele is Executive Director of the UN Global Compact Network Türkiye and
+Deputy <br>In our session she explained how the Compact’s multi-stakeholder partnerships can
+translate corporate pledges into real-world progress on the SDGs, directly echoing
+our coursework on ESG metrics and green transitions</p>
                 </div>
             </div>
             
             <div class="speaker" onclick="toggleActive(this)">
                 <div class="speaker-header">
-                    <h2>Speaker 2: Innovation Workshop</h2>
+                    <h2>Speaker 2: Pelin Yazıcı Karaçal</h2>
                 </div>
                 <div class="speaker-content">
                     <div class="speaker-meta">
-                        <p><strong>Date:</strong> April 5, 2025</p>
-                        <p><strong>Time:</strong> 10:00 AM - 12:00 PM</p>
-                        <p><strong>Location:</strong> Innovation Lab</p>
+                        <p><strong>Week:</strong> 5</p>
                     </div>
                     <h3>About the Session</h3>
-                    <p>Design thinking expert Marcus Johnson will lead this hands-on workshop demonstrating how to foster innovation in traditional business environments.</p>
+                    <p>Pelin Yazıcı Karaçal serves as Sustainability Manager at Sabancı University, where
+she coordinates campus-wide climate and circular-economy initiatives <br>She walked us through the University’s zero-waste roadmap, turning our class
+theories on responsible consumption into a living campus laboratory we can all
+observe.</p>
+                </div>
+            </div>
+
+            <div class="speaker" onclick="toggleActive(this)">
+                <div class="speaker-header">
+                    <h2>Speaker 3: Levent Kömür</h2>
+                </div>
+                <div class="speaker-content">
+                    <div class="speaker-meta">
+                        <p><strong>Week:</strong> 6</p>
+                    </div>
+                    <h3>About the Session</h3>
+                    <p>Levent Kömür serves as the General Manager of Uludağ İçecek overseeing
+operations that combine agriculture, production, and distribution across Turkey.<br>In our session, he emphasized how politics shape sustainability, from excise
+taxes and regulatory frameworks, tying directly into our lessons on the political forces
+driving climate policy and corporate responsibility.</p>
+                </div>
+            </div>
+
+            <div class="speaker" onclick="toggleActive(this)">
+                <div class="speaker-header">
+                    <h2>Speaker 4: Derya Özet Yalgı</h2>
+                </div>
+                <div class="speaker-content">
+                    <div class="speaker-meta">
+                        <p><strong>Week:</strong> 9</p>
+                    </div>
+                    <h3>About the Session</h3>
+                    <p>Derya Özet Yalgı is Sustainability Director at Sabancı Holding and brings over a
+decade of experience crafting corporate sustainability strategies in Turkey <br>
+Her talk unpacked how conglomerates set science-based targets and align
+subsidiaries around carbon-neutral goals, reinforcing our lessons on the politics of
+sustainability.</p>
+                </div>
+            </div>
+
+            <div class="speaker" onclick="toggleActive(this)">
+                <div class="speaker-header">
+                    <h2>Speaker 5: Derya Sargın Malkoç</h2>
+                </div>
+                <div class="speaker-content">
+                    <div class="speaker-meta">
+                        <p><strong>Week:</strong> 10</p>
+                    </div>
+                    <h3>About the Session</h3>
+                    <p>Derya Sargın Malkoç is Sustainability Manager at İş Bankası, leading the bank’s
+climate-risk and green-finance agenda.<br>She connected banking to sustainability by showing how green loans and ESG
+screening can steer capital toward the circular economy cases we studied in class.</p>
                 </div>
             </div>
             
             <div class="speaker" onclick="toggleActive(this)">
                 <div class="speaker-header">
-                    <h2>Speaker 3: Global Perspectives</h2>
+                    <h2>Speaker 6: Asma Nairi</h2>
                 </div>
                 <div class="speaker-content">
                     <div class="speaker-meta">
-                        <p><strong>Date:</strong> May 10, 2025</p>
-                        <p><strong>Time:</strong> 1:00 PM - 2:30 PM</p>
-                        <p><strong>Location:</strong> Global Business Center</p>
+                        <p><strong>Week:</strong> 13</p>
                     </div>
                     <h3>About the Session</h3>
-                    <p>Former diplomat and international business consultant Aisha Mohammed shares insights on managing cross-cultural teams in global organizations.</p>
+                    <p>Asma Nairi is the MENA Regional Manager for the International Detention Coalition
+and a Tunisian lawyer-researcher specializing in human rights<br>She illuminated the social-justice side of sustainability, explaining how humane
+migration policies intersect with environmental displacement, linking directly to our
+module on environmental justice and inequality.</p>
                 </div>
             </div>
         </div>
@@ -559,46 +877,74 @@
         <div id="assignments" class="tab-content">
             <div class="assignment" onclick="toggleActive(this)">
                 <div class="assignment-header">
-                    <h2>Reflection: Personal Management Philosophy</h2>
+                    <h2>Assignment 1: Reflection on Sustainability in Everyday Life</h2>
                 </div>
                 <div class="assignment-content">
                     <div class="assignment-meta">
-                        <span><i class="far fa-calendar-alt"></i> Due: February 10, 2025</span>
+                        <span><i class="far fa-calendar-alt"></i> Due: Week 3</span>
                         <span><i class="far fa-file-alt"></i> 750-1000 words</span>
-                        <span><i class="far fa-percent"></i> 15% of grade</span>
-                    </div>
-                    <h3>Description</h3>
-                    <p>Develop a personal management philosophy statement reflecting on your values, leadership style, and approach to organizational challenges. Incorporate concepts from Weeks 1-2 readings.</p>
-                </div>
-            </div>
-            
-            <div class="assignment" onclick="toggleActive(this)">
-                <div class="assignment-header">
-                    <h2>Audit: Organizational Analysis</h2>
-                </div>
-                <div class="assignment-content">
-                    <div class="assignment-meta">
-                        <span><i class="far fa-calendar-alt"></i> Due: March 15, 2025</span>
-                        <span><i class="far fa-file-alt"></i> 8-10 pages</span>
-                        <span><i class="far fa-percent"></i> 25% of grade</span>
-                    </div>
-                    <h3>Description</h3>
-                    <p>Conduct a comprehensive audit of a real organization's structure, culture, and strategic approach. Your analysis should identify strengths, weaknesses, and recommendations for improvement.</p>
-                </div>
-            </div>
-            
-            <div class="assignment" onclick="toggleActive(this)">
-                <div class="assignment-header">
-                    <h2>Debate: Ethical Dilemmas</h2>
-                </div>
-                <div class="assignment-content">
-                    <div class="assignment-meta">
-                        <span><i class="far fa-calendar-alt"></i> Due: April 5, 2025</span>
-                        <span><i class="far fa-clock"></i> 15 minute presentation</span>
                         <span><i class="far fa-percent"></i> 10% of grade</span>
                     </div>
                     <h3>Description</h3>
-                    <p>Participate in a team debate on contemporary ethical challenges in management. Teams will be assigned positions to argue regarding real-world case studies.</p>
+                    <p>As one of our first assignments, we took on the challenge of reflecting on sustainability in a part of everyday life that matters to us, whether it was food, music, fashion, travel, or something else personal. It was a great starting point that opened the door to many different perspectives and showed just how wide-reaching sustainability really is. <br>
+We formed groups and each chose a field we relate to, then explored the sustainability challenges and opportunities within it. From the carbon footprint of concerts to waste in the fashion industry or the environmental impact of fast food, everyone brought a unique lens. We also proposed solutions and created personal action plans, thinking critically about how we could each make a difference in our chosen area.<br>
+This assignment helped us bridge the gap between academic discussions and real-life choices, making sustainability feel more personal and more urgent.
+</p>
+                </div>
+            </div>
+            
+            <div class="assignment" onclick="toggleActive(this)">
+                <div class="assignment-header">
+                    <h2>Assignment 2: Case Study on Consumer Responsibility – Measuring One’s Individual Waste</h2>
+                </div>
+                <div class="assignment-content">
+                    <div class="assignment-meta">
+                        <span><i class="far fa-calendar-alt"></i> Due: Week 6</span>
+                        <span><i class="far fa-file-alt"></i> 8-10 pages</span>
+                        <span><i class="far fa-percent"></i>10% of grade</span>
+                    </div>
+                    <h3>Description</h3>
+                    <p>After Week 5, where we explored consumer responsibility and the hidden environmental costs behind the things we use, we took a closer look at ourselves. For one week, we each tracked our own waste and consumption habits, from food waste and plastic use to how much electricity or water we used daily. <br>
+This self-assessment project became a way for us to turn theory into practice. We kept detailed logs, analyzed our habits, and reflected on what they revealed. Some of us were surprised by how much single-use plastic we relied on, while others noticed patterns in food waste or energy overuse that we hadn’t thought much about before. <br>
+In the end, we proposed realistic steps for change in our personal routines. Whether it was reducing unnecessary packaging, unplugging devices, or meal-planning to cut down food waste, the project helped us connect our lifestyle choices with broader sustainability challenges.<br>
+It was a powerful reminder that individual actions matter, and that even small changes, when made mindfully, are part of the solution.</p>
+                </div>
+            </div>
+
+            <div class="assignment" onclick="toggleActive(this)">
+                <div class="assignment-header">
+                    <h2>Assignment 3: Project-Based Learning-Sustainability Audits</h2>
+                </div>
+                <div class="assignment-content">
+                    <div class="assignment-meta">
+                        <span><i class="far fa-calendar-alt"></i> Due: Week 10</span>
+                        <span><i class="far fa-file-alt"></i> 8-10 pages</span>
+                        <span><i class="far fa-percent"></i>10% of grade</span>
+                    </div>
+                    <h3>Description</h3>
+                    <p>One of our most hands-on experiences in the course was conducting sustainability audits of our university campus. We assessed real-life practices around waste management, energy use, water conservation, and more, using the knowledge we’d built in class to evaluate how sustainable our own learning environment really is.<br>
+Students chose specific areas to focus on, such as energy efficiency in buildings, the effectiveness of recycling systems, or water-saving opportunities around campus. What made this project especially meaningful was how some groups went beyond observation, speaking directly with university staff, conducting surveys with students, and even reviewing policy documents to understand what's working and what needs improvement.<br>
+The final outcome wasn’t just a list of findings, we also presented actionable recommendations for how the university could do better. From adding clearer recycling signage to suggesting motion-sensor lights or collecting rainwater for irrigation, our ideas were rooted in real data and inspired by the course’s emphasis on applied learning.
+This project helped us realize that sustainability isn’t just a global issue, it starts right where we are. It empowered us to be both critical thinkers and changemakers in our own community.</p>
+                </div>
+            </div>
+            
+            <div class="assignment" onclick="toggleActive(this)">
+                <div class="assignment-header">
+                    <h2>Assignment 4: Debates on Controversial Topics in Sustainability</h2>
+                </div>
+                <div class="assignment-content">
+                    <div class="assignment-meta">
+                        <span><i class="far fa-calendar-alt"></i> Week 14</span>
+                        <span><i class="far fa-clock"></i> 15 minutes per group</span>
+                        <span><i class="far fa-percent"></i> 10% of grade</span>
+                    </div>
+                    <h3>Description</h3>
+                    <p>Last but not least, we wrapped up the semester with a series of lively debates, and it was such a powerful and engaging way to end the course. For this final assignment, we were divided into teams, each representing different perspectives on some of the most controversial and complex issues in sustainability.<br>
+The topics ranged from degrowth vs. green growth, to whether ESG investing truly promotes sustainability or is just greenwashing. We debated the promise and pitfalls of electric vehicles, questioned who should bear the responsibility for climate change, and discussed how to balance economic growth with social and environmental justice. Some of us took on the roles of policymakers from developed nations, while others argued from the standpoint of the Global South, bringing issues of equity and historical responsibility to the forefront. <br>
+These debates pushed us to research deeply, think critically, and understand opposing viewpoints. More than just arguing for a side, we learned how nuanced sustainability can be, and how essential dialogue and disagreement are for progress. <br>
+This final project brought together everything we had explored throughout the semester. It helped us reflect on the real-world tensions between politics, economics, and justice, while sharpening our communication skills. It was the perfect way to end the course on a high note, leaving us inspired, informed, and ready to take these conversations beyond the classroom.
+</p>
                 </div>
             </div>
         </div>
@@ -607,7 +953,7 @@
         <div id="guide" class="tab-content">
             <div class="guide-section">
                 <h2>How to Use This Website</h2>
-                <p>This guide will help you navigate and make the most of our course website. Follow these simple steps to access all available resources.</p>
+                <p>This guide will help you navigate and make the most of the course website. Follow these simple steps to access all available resources.</p>
             </div>
             
             <div class="guide-section">
@@ -621,8 +967,8 @@
                         <ul>
                             <li><strong>Course Intro</strong> - Overview and objectives</li>
                             <li><strong>Syllabus</strong> - Weekly breakdown of topics</li>
-                            <li><strong>Guest Speakers</strong> - Information about special sessions</li>
-                            <li><strong>Assignments</strong> - Details about coursework</li>
+                            <li><strong>Guest Speakers</strong> - Information about special guest speaker sessions</li>
+                            <li><strong>Assignments</strong> - Details about Experiential and Interactive Learning Assignments</li>
                             <li><strong>User Guide</strong> - These instructions</li>
                         </ul>
                     </div>
@@ -636,7 +982,7 @@
                         <ul>
                             <li>Click on any week in the Syllabus to see topics and readings</li>
                             <li>Click on speaker names to view session details</li>
-                            <li>Click on assignments to view requirements and due dates</li>
+                            <li>Click on assignments for elaboration</li>
                         </ul>
                         <p>Click again to collapse the details when you're finished.</p>
                     </div>
@@ -662,7 +1008,7 @@
                     <div class="step-number"><i class="fas fa-lightbulb"></i></div>
                     <div class="step-content">
                         <h3>Stay Organized</h3>
-                        <p>Bookmark this page for easy access throughout the semester. Check the Assignments tab regularly to stay on top of deadlines.</p>
+                        <p>Bookmark this page for easy access throughout the semester.</p>
                     </div>
                 </div>
                 
@@ -670,7 +1016,7 @@
                     <div class="step-number"><i class="fas fa-bell"></i></div>
                     <div class="step-content">
                         <h3>Set Reminders</h3>
-                        <p>Note important dates from the Guest Speakers and Assignments sections in your personal calendar.</p>
+                        <p>Note important assignment deadlines in your personal calendar.</p>
                     </div>
                 </div>
                 
@@ -678,7 +1024,7 @@
                     <div class="step-number"><i class="fas fa-question-circle"></i></div>
                     <div class="step-content">
                         <h3>Need Help?</h3>
-                        <p>If you encounter any technical issues with the website, please contact the course instructor or teaching assistant for support.</p>
+                        <p>For course related queries, use the contacts option on the top right of the page to reach the course professor and TA. If you encounter any technical issues with the website, please contact "manaal.amir@sabanciuniv.edu"</p>
                     </div>
                 </div>
             </div>
@@ -686,21 +1032,21 @@
     </div>
 
     <script>
-        // Tab switching functionality
+        
         document.querySelectorAll('.tab').forEach(tab => {
             tab.addEventListener('click', () => {
-                // Remove active class from all tabs and contents
+                
                 document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
                 document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
                 
-                // Add active class to clicked tab and corresponding content
+                
                 tab.classList.add('active');
                 const tabId = tab.getAttribute('data-tab');
                 document.getElementById(tabId).classList.add('active');
             });
         });
 
-        // Toggle active class for accordion items
+       
         function toggleActive(element) {
             element.classList.toggle('active');
         }
