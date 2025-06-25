@@ -1145,7 +1145,30 @@ This final project brought together everything we had explored throughout the se
     </div>
 
     <script>
+       
+    document.addEventListener('DOMContentLoaded', function() {
+        const popup = document.getElementById('welcome-popup');
         
+        
+        if (!localStorage.getItem('welcomePopupShown')) {
+            setTimeout(() => {
+                popup.classList.add('active');
+                localStorage.setItem('welcomePopupShown', 'true');
+            }, 500);
+        }
+        
+        
+        document.querySelector('.close-popup').addEventListener('click', function() {
+            popup.classList.remove('active');
+        });
+        
+        
+        popup.addEventListener('click', function(e) {
+            if (e.target === popup) {
+                popup.classList.remove('active');
+            }
+        });
+    });
         document.querySelectorAll('.tab').forEach(tab => {
             tab.addEventListener('click', () => {
                 
