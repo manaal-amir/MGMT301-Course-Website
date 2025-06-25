@@ -462,6 +462,94 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* Welcome Popup Styles */
+        .welcome-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .welcome-popup.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .popup-content {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .popup-content h2 {
+            color: var(--darker-sage);
+            font-family: 'Playfair Display', serif;
+            margin-top: 0;
+            border-bottom: 2px solid var(--light-sage);
+            padding-bottom: 0.5rem;
+        }
+        
+        .popup-content p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .close-popup {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.5rem;
+            color: var(--dark-sage);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .close-popup:hover {
+            color: var(--darker-sage);
+            transform: scale(1.1);
+        }
+        
+        .popup-footer {
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--light-sage);
+            text-align: center;
+        }
+        
+        .linkedin-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--dark-sage);
+            color: var(--cream);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: 0.5rem;
+        }
+        
+        .linkedin-link:hover {
+            background-color: var(--darker-sage);
+            transform: translateY(-2px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .container {
@@ -494,10 +582,35 @@
             .credits-content {
                 width: 200px;
             }
+
+            .popup-content {
+                padding: 1.5rem;
+                max-height: 85vh;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Welcome Popup -->
+    <div id="welcome-popup" class="welcome-popup">
+        <div class="popup-content">
+            <span class="close-popup">&times;</span>
+            <h2>Reflections on Teaching MGMT 301 – My First Steps at Sabancı</h2>
+            <p>Teaching MGMT 301 was full of firsts for me. It was my first course at Sabancı University after many years, and also my first time teaching a full course focused on sustainability. Naturally, I had questions at the beginning — how would the course flow? Would the readings, guest lectures, and assignments resonate with students? How would they respond?</p>
+            <p>Looking back now, I can say it was a truly wonderful experience, thanks above all to the students. The interest was remarkable — 58 students enrolled, which I was told is an impressive number for a brand-new elective. This alone gave me a lot of energy and hope for what's to come.</p>
+            <p>Week by week, I watched as students engaged with the material, took the assignments seriously, and brought thoughtful perspectives to class discussions. Their openness, curiosity, and willingness to challenge assumptions made this course far more than a standard lecture—it became a collective journey into some of the most pressing questions of our time.</p>
+            <p>That said, the course also raised new questions for me as an instructor. One of the biggest challenges I faced was figuring out how to navigate students' use of AI tools. Instead of banning them outright, I've been reflecting on how to integrate digital tools like AI more productively into the learning process. How can we use them to encourage critical thinking rather than shortcut it? This is one of the core questions I'll be carrying forward.</p>
+            <p>Another ongoing challenge is how to sustain—and even deepen—student interest in sustainability at a time when the topic itself feels constantly under threat. The urgency is real, but so is the risk of burnout and disengagement. Keeping the conversation relevant, empowering, and intellectually alive is both a responsibility and a puzzle I hope to keep working on.</p>
+            <p>So when Syeda came to me with the idea of building a website to capture our shared learning experience, I was incredibly touched. It's one of the most thoughtful and creative gestures I've encountered in my teaching life. I hope this site becomes a lasting reflection of the spirit of MGMT 301—and that it encourages more students to join our growing conversations around sustainability, including through the minor program we're building at Sabancı.</p>
+            <div class="popup-footer">
+                <p>Nuri Zafer Yenal - Course Instructor</p>
+                <a href="https://www.linkedin.com/in/zafer-yenal-07899810a/" target="_blank" rel="noopener noreferrer" class="linkedin-link">
+                    <i class="fab fa-linkedin"></i> Connect on LinkedIn
+                </a>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <!-- Credits Box -->
         <div class="credits-box">
@@ -582,8 +695,8 @@ This website aims to capture our learning journey and share it with future stude
                     <h3>Readings</h3>
                     <ul>
                         <li>Caradonna, Sustainability: A History (Introduction)</li>
-                        <li>Robson, “Pessimism Is a Barrier to Progress” (Big Think)</li>
-                        <li>Malik, “Why Climate Tribalism Only Helps the Deniers” (The Guardian)</li>
+                        <li>Robson, "Pessimism Is a Barrier to Progress" (Big Think)</li>
+                        <li>Malik, "Why Climate Tribalism Only Helps the Deniers" (The Guardian)</li>
                     </ul>
                 </div>
             </div>
@@ -601,9 +714,9 @@ This website aims to capture our learning journey and share it with future stude
                     </ul>
                     <h3>Readings</h3>
                     <ul>
-                        <li>Steffen et al. (2015): “The Great Acceleration &amp; the Anthropocene” (The
+                        <li>Steffen et al. (2015): "The Great Acceleration &amp; the Anthropocene" (The
 Anthropocene Review).</li>
-                        <li>Haraway (2015): “Anthropocene, Capitalocene, Plantationocene, Chthulucene”
+                        <li>Haraway (2015): "Anthropocene, Capitalocene, Plantationocene, Chthulucene"
 (Environmental Humanities).</li>
                     <li>Natural History Museum (NHM): What is the Anthropocene?</li>
 
@@ -671,9 +784,9 @@ emissions in climate injustice.</li>
                     </ul>
                     <h3>Readings</h3>
                     <ul>
-                        <li>Ferraro &amp; de Tejada Cuenca (2024), &#39;Can the Fashion Industry Be More
-Sustainable?&#39;</li>
-                        <li>Niinimäki et al. (2020), &#39;The Environmental Price of Fast Fashion&#39;</li>
+                        <li>Ferraro &amp; de Tejada Cuenca (2024), 'Can the Fashion Industry Be More
+Sustainable?'</li>
+                        <li>Niinimäki et al. (2020), 'The Environmental Price of Fast Fashion'</li>
                     </ul>
                 </div>
             </div>
@@ -691,7 +804,7 @@ plastics.</li>
                     </ul>
                     <h3>Readings</h3>
                     <ul>
-                        <li>McMichael P. 2009. “The World Food Crisis in Historical Perspective.” Monthly
+                        <li>McMichael P. 2009. "The World Food Crisis in Historical Perspective." Monthly
 Review: 61(3):32-47</li>
                     </ul>
                 </div>
@@ -699,7 +812,7 @@ Review: 61(3):32-47</li>
 
             <div class="week" onclick="toggleActive(this)">
                 <div class="week-header">
-                    <h2>Week 8&9: Mitigation, Carbon Markets, and Energy Transitions</h2>
+                    <h2>Week 8&amp;9: Mitigation, Carbon Markets, and Energy Transitions</h2>
                 </div>
                 <div class="week-content">
                     <h3>Key Themes</h3>
@@ -712,10 +825,10 @@ Review: 61(3):32-47</li>
                     </ul>
                     <h3>Readings</h3>
                     <ul>
-                        <li>Benjamin K. Sovacool, et al. 2021. “Dispossessed by decarbonisation: Reducing
-vulnerability, injustice, and inequality in the lived experience of low-carbon pathways,”</li>
-                        <li>George Monbiot. 2021. “‘Green growth’ doesn’t exist – less of everything is the only
-way to avert catastrophe.”</li>
+                        <li>Benjamin K. Sovacool, et al. 2021. "Dispossessed by decarbonisation: Reducing
+vulnerability, injustice, and inequality in the lived experience of low-carbon pathways,"</li>
+                        <li>George Monbiot. 2021. "'Green growth' doesn't exist – less of everything is the only
+way to avert catastrophe."</li>
                         <li>Zink, T., &amp; Geyer, R. 2016. There Is No Such Thing as a Green Product. Stanford
 Social Innovation Review.</li>
                     </ul>
@@ -736,9 +849,9 @@ and promises of sustainable investment strategies.</li>
                     </ul>
                     <h3>Readings</h3>
                     <ul>
-                        <li>Harriet Agnew, et al. 2022. “How ESG investing came to a
-reckoning,” Financial Times, June 6.</li>
-                        <li>Cam Simpson, et al. 2021. “The ESG Mirage,” Bloomberg.</li>
+                        <li>Harriet Agnew, et al. 2022. "How ESG investing came to a
+reckoning," Financial Times, June 6.</li>
+                        <li>Cam Simpson, et al. 2021. "The ESG Mirage," Bloomberg.</li>
                         <li>UN Environment Programme, Leading the Way to a Sustainable Future Priorities for
 a Global Responsible Banking Sector.</li>
 <li>Alice Ross, Can sustainable investing survive Trump 2.0?. 2025. Financial Times,
@@ -761,13 +874,13 @@ environmental governance.</li>
                     </ul>
                     <h3>Readings</h3>
                     <ul>
-                        <li>James McCarthy. 2019. “Authoritarianism, Populism, and the Environment:
-Comparative Experiences, Insights, and Perspectives,” Annals of the American
+                        <li>James McCarthy. 2019. "Authoritarianism, Populism, and the Environment:
+Comparative Experiences, Insights, and Perspectives," Annals of the American
 Association of Geographers, 109:2, 301-313</li>
-                        <li>Lisa Friedman, 2024. “Trump’s Return Hangs Over U.N. Climate Negotiations,” New
+                        <li>Lisa Friedman, 2024. "Trump's Return Hangs Over U.N. Climate Negotiations," New
 York Times, November 11.</li>
-                        <li>Miriam Meissner (2019) “Against Accumulation: Lifestyle Minimalism, Degrowth, and
-the Post-Ecological Condition” Journal of Cultural Economy.</li>
+                        <li>Miriam Meissner (2019) "Against Accumulation: Lifestyle Minimalism, Degrowth, and
+the Post-Ecological Condition" Journal of Cultural Economy.</li>
                     </ul>
                 </div>
             </div>
@@ -786,7 +899,7 @@ the Post-Ecological Condition” Journal of Cultural Economy.</li>
                     </div>
                     <h3>About the Session</h3>
                     <p>Melda Çele is Executive Director of the UN Global Compact Network Türkiye and
-Deputy <br>In our session she explained how the Compact’s multi-stakeholder partnerships can
+Deputy <br>In our session she explained how the Compact's multi-stakeholder partnerships can
 translate corporate pledges into real-world progress on the SDGs, directly echoing
 our coursework on ESG metrics and green transitions</p>
                 </div>
@@ -802,7 +915,7 @@ our coursework on ESG metrics and green transitions</p>
                     </div>
                     <h3>About the Session</h3>
                     <p>Pelin Yazıcı Karaçal serves as Sustainability Manager at Sabancı University, where
-she coordinates campus-wide climate and circular-economy initiatives <br>She walked us through the University’s zero-waste roadmap, turning our class
+she coordinates campus-wide climate and circular-economy initiatives <br>She walked us through the University's zero-waste roadmap, turning our class
 theories on responsible consumption into a living campus laboratory we can all
 observe.</p>
                 </div>
